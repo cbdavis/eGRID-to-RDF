@@ -1,0 +1,450 @@
+[
+  {
+    "op": "core/column-addition",
+    "description": "Create column State at index 2 based on column PSTATABB using expression grel:value.replace(/^AL$/, 'Alabama').replace(/^AK$/, 'Alaska').replace(/^AZ$/, 'Arizona').replace(/^AR$/, 'Arkansas').replace(/^CA$/, 'California').replace(/^CO$/, 'Colorado').replace(/^CT$/, 'Connecticut').replace(/^DE$/, 'Delaware').replace(/^FL$/, 'Florida').replace(/^GA$/, 'Georgia').replace(/^HI$/, 'Hawaii').replace(/^ID$/, 'Idaho').replace(/^IL$/, 'Illinois').replace(/^IN$/, 'Indiana').replace(/^IA$/, 'Iowa').replace(/^KS$/, 'Kansas').replace(/^KY$/, 'Kentucky').replace(/^LA$/, 'Louisiana').replace(/^ME$/, 'Maine').replace(/^MD$/, 'Maryland').replace(/^MA$/, 'Massachusetts').replace(/^MI$/, 'Michigan').replace(/^MN$/, 'Minnesota').replace(/^MS$/, 'Mississippi').replace(/^MO$/, 'Missouri').replace(/^MT$/, 'Montana').replace(/^NE$/, 'Nebraska').replace(/^NV$/, 'Nevada').replace(/^NH$/, 'New Hampshire').replace(/^NJ$/, 'New Jersey').replace(/^NM$/, 'New Mexico').replace(/^NY$/, 'New York').replace(/^NC$/, 'North Carolina').replace(/^ND$/, 'North Dakota').replace(/^OH$/, 'Ohio').replace(/^OK$/, 'Oklahoma').replace(/^OR$/, 'Oregon').replace(/^PA$/, 'Pennsylvania').replace(/^RI$/, 'Rhode Island').replace(/^SC$/, 'South Carolina').replace(/^SD$/, 'South Dakota').replace(/^TN$/, 'Tennessee').replace(/^TX$/, 'Texas').replace(/^UT$/, 'Utah').replace(/^VT$/, 'Vermont').replace(/^VA$/, 'Virginia').replace(/^WA$/, 'Washington').replace(/^WV$/, 'West Virginia').replace(/^WI$/, 'Wisconsin').replace(/^WY$/, 'Wyoming').replace(/^AS$/, 'American Samoa').replace(/^DC$/, 'District of Columbia').replace(/^FM$/, 'Federated States of Micronesia').replace(/^GU$/, 'Guam').replace(/^MH$/, 'Marshall Islands').replace(/^MP$/, 'Northern Mariana Islands').replace(/^PW$/, 'Palau').replace(/^PR$/, 'Puerto Rico').replace(/^VI$/, 'Virgin Islands')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "State",
+    "columnInsertIndex": 2,
+    "baseColumnName": "PSTATABB",
+    "expression": "grel:value.replace(/^AL$/, 'Alabama').replace(/^AK$/, 'Alaska').replace(/^AZ$/, 'Arizona').replace(/^AR$/, 'Arkansas').replace(/^CA$/, 'California').replace(/^CO$/, 'Colorado').replace(/^CT$/, 'Connecticut').replace(/^DE$/, 'Delaware').replace(/^FL$/, 'Florida').replace(/^GA$/, 'Georgia').replace(/^HI$/, 'Hawaii').replace(/^ID$/, 'Idaho').replace(/^IL$/, 'Illinois').replace(/^IN$/, 'Indiana').replace(/^IA$/, 'Iowa').replace(/^KS$/, 'Kansas').replace(/^KY$/, 'Kentucky').replace(/^LA$/, 'Louisiana').replace(/^ME$/, 'Maine').replace(/^MD$/, 'Maryland').replace(/^MA$/, 'Massachusetts').replace(/^MI$/, 'Michigan').replace(/^MN$/, 'Minnesota').replace(/^MS$/, 'Mississippi').replace(/^MO$/, 'Missouri').replace(/^MT$/, 'Montana').replace(/^NE$/, 'Nebraska').replace(/^NV$/, 'Nevada').replace(/^NH$/, 'New Hampshire').replace(/^NJ$/, 'New Jersey').replace(/^NM$/, 'New Mexico').replace(/^NY$/, 'New York').replace(/^NC$/, 'North Carolina').replace(/^ND$/, 'North Dakota').replace(/^OH$/, 'Ohio').replace(/^OK$/, 'Oklahoma').replace(/^OR$/, 'Oregon').replace(/^PA$/, 'Pennsylvania').replace(/^RI$/, 'Rhode Island').replace(/^SC$/, 'South Carolina').replace(/^SD$/, 'South Dakota').replace(/^TN$/, 'Tennessee').replace(/^TX$/, 'Texas').replace(/^UT$/, 'Utah').replace(/^VT$/, 'Vermont').replace(/^VA$/, 'Virginia').replace(/^WA$/, 'Washington').replace(/^WV$/, 'West Virginia').replace(/^WI$/, 'Wisconsin').replace(/^WY$/, 'Wyoming').replace(/^AS$/, 'American Samoa').replace(/^DC$/, 'District of Columbia').replace(/^FM$/, 'Federated States of Micronesia').replace(/^GU$/, 'Guam').replace(/^MH$/, 'Marshall Islands').replace(/^MP$/, 'Northern Mariana Islands').replace(/^PW$/, 'Palau').replace(/^PR$/, 'Puerto Rico').replace(/^VI$/, 'Virgin Islands')",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://enipedia.tudelft.nl/data/eGRID/",
+      "prefixes": [
+        {
+          "name": "egrid",
+          "uri": "http://enipedia.tudelft.nl/data/eGRID/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        },
+        {
+          "name": "egridprop",
+          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells['ORISPL'].value+'/Generator/'+cells['GENID'].value",
+          "isRowNumberCell": false,
+          "columnName": "ORISPL",
+          "rdfTypes": [],
+          "links": [
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/eGRID2002_2000_file_generator_sequence_number",
+              "curie": "egridprop:eGRID2002_2000_file_generator_sequence_number",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                "columnName": "SEQGEN00"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/eGRID2002_1999_file_generator_sequence_number",
+              "curie": "egridprop:eGRID2002_1999_file_generator_sequence_number",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                "columnName": "SEQGEN99"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/State_abbreviation",
+              "curie": "egridprop:State_abbreviation",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "PSTATABB"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Plant_name",
+              "curie": "egridprop:Plant_name",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "PNAME"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generator_ID",
+              "curie": "egridprop:Generator_ID",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "GENID"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generator_Type",
+              "curie": "egridprop:Generator_Type",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "GENTYPE"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Number_of_Boilers",
+              "curie": "egridprop:Number_of_Boilers",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                "columnName": "NUMBLR"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generator_Status",
+              "curie": "egridprop:Generator_Status",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells['ORISPL'].value+'/Generator/'+cells['GENID'].value+'/Generator_Status/'+cells['year'].value",
+                "isRowNumberCell": false,
+                "columnName": "GENSTAT",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "GENSTAT"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Prime_Mover",
+              "curie": "egridprop:Prime_Mover",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "PRMVR"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Nameplate_Capacity",
+              "curie": "egridprop:Nameplate_Capacity",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells['ORISPL'].value+'/Generator/'+cells['GENID'].value+'/Nameplate_Capacity/'+cells['year'].value",
+                "isRowNumberCell": false,
+                "columnName": "NAMEPCAP",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "NAMEPCAP"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MW"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generator_Capacity_Factor",
+              "curie": "egridprop:Generator_Capacity_Factor",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells['ORISPL'].value+'/Generator/'+cells['GENID'].value+'/Generation_Capacity_Factor/'+cells['year'].value",
+                "isRowNumberCell": false,
+                "columnName": "CFACT",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "CFACT"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation",
+              "curie": "egridprop:Annual_Net_Generation",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells['ORISPL'].value+'/Generator/'+cells['GENID'].value+'/Annual_Net_Generation/'+cells['year'].value",
+                "isRowNumberCell": false,
+                "columnName": "GENNTAN",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "GENNTAN"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Ozone_Season_Net_Generation",
+              "curie": "egridprop:Ozone_Season_Net_Generation",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells['ORISPL'].value+'/Generator/'+cells['GENID'].value+'/Ozone_Season_Net_Generation/'+cells['year'].value",
+                "isRowNumberCell": false,
+                "columnName": "GENNTOZ",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "GENNTOZ"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year_Online",
+              "curie": "egridprop:Year_Online",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                "columnName": "GENYRONL"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/eGRID2002_1996_file_generator_sequence_number",
+              "curie": "egridprop:eGRID2002_1996_file_generator_sequence_number",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                "columnName": "SEQGEN"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/eGRID2002_1997_file_generator_sequence_number",
+              "curie": "egridprop:eGRID2002_1997_file_generator_sequence_number",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                "columnName": "SEQGEN97"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/eGRID2002_1998_file_generator_sequence_number",
+              "curie": "egridprop:eGRID2002_1998_file_generator_sequence_number",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                "columnName": "SEQGEN98"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/eGRID2006_2004_file_generator_sequence_number",
+              "curie": "egridprop:eGRID2006_2004_file_generator_sequence_number",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                "columnName": "SEQGEN04"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Data_Source",
+              "curie": "egridprop:Generation_Data_Source",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "GENERSRC"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/eGRID2007_2005_file_generator_sequence_number",
+              "curie": "egridprop:eGRID2007_2005_file_generator_sequence_number",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                "columnName": "SEQGEN05"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/eGRID2010_2007_file_generator_sequence_number",
+              "curie": "egridprop:eGRID2010_2007_file_generator_sequence_number",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                "columnName": "SEQGEN07"
+              }
+            }
+          ]
+        },
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells['ORISPL'].value",
+          "isRowNumberCell": true,
+          "rdfTypes": [],
+          "links": [
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generator",
+              "curie": "egridprop:Generator",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells['ORISPL'].value+'/Generator/'+cells['GENID'].value",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

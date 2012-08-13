@@ -1,0 +1,4240 @@
+[
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column LON using expression grel:value.replace('N/A', '-99')",
+    "engineConfig": {
+      "facets": [
+        {
+          "expression": "value",
+          "to": 180,
+          "selectError": true,
+          "selectNumeric": false,
+          "name": "LON",
+          "selectBlank": false,
+          "columnName": "LON",
+          "selectNonNumeric": true,
+          "from": -170,
+          "type": "range"
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "LON",
+    "expression": "grel:value.replace('N/A', '-99')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column LON using expression value.toNumber()",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "LON",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column COMBUST using expression grel:replace(replace(replace(value, '0.5', 'Partial combustion'), '0', 'No combustion'), '1', 'Combusts')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "COMBUST",
+    "expression": "grel:replace(replace(replace(value, '0.5', 'Partial combustion'), '0', 'No combustion'), '1', 'Combusts')",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column COMBUST to PlantCombustionStatus",
+    "oldColumnName": "COMBUST",
+    "newColumnName": "PlantCombustionStatus"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column NAMEPCAP to PlantNameplateCapacityMW",
+    "oldColumnName": "NAMEPCAP",
+    "newColumnName": "PlantNameplateCapacityMW"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column NUMGEN to NumberOfGenerators",
+    "oldColumnName": "NUMGEN",
+    "newColumnName": "NumberOfGenerators"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column NUMBLR to NumberOfBoilers",
+    "oldColumnName": "NUMBLR",
+    "newColumnName": "NumberOfBoilers"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column CCFLAG to CountyCentroidUsed",
+    "oldColumnName": "CCFLAG",
+    "newColumnName": "CountyCentroidUsed"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column CountyCentroidUsed using expression grel:replace(replace(value, '1', 'true'), '0', 'false')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CountyCentroidUsed",
+    "expression": "grel:replace(replace(value, '1', 'true'), '0', 'false')",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column COALFLAG to UsesAnyAmountOfCoal",
+    "oldColumnName": "COALFLAG",
+    "newColumnName": "UsesAnyAmountOfCoal"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column UsesAnyAmountOfCoal using expression grel:replace(replace(value, '1', 'true'), '0', 'false')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "UsesAnyAmountOfCoal",
+    "expression": "grel:replace(replace(value, '1', 'true'), '0', 'false')",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column SEQPLT05 to eGRID2007_2005_file_plant_sequence_number",
+    "oldColumnName": "SEQPLT05",
+    "newColumnName": "eGRID2007_2005_file_plant_sequence_number"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column PSTATABB to State_abbreviation",
+    "oldColumnName": "PSTATABB",
+    "newColumnName": "State_abbreviation"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column PNAME to Plant_name",
+    "oldColumnName": "PNAME",
+    "newColumnName": "Plant_name"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column OPRNAME to Plant_operator_name",
+    "oldColumnName": "OPRNAME",
+    "newColumnName": "Plant_operator_name"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column OPRCODE to Plant_operator_ID",
+    "oldColumnName": "OPRCODE",
+    "newColumnName": "Plant_operator_ID"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column UTLSRVNM to Utility_service_area_name",
+    "oldColumnName": "UTLSRVNM",
+    "newColumnName": "Utility_service_area_name"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column UTLSRVID to Utility_service_area_ID",
+    "oldColumnName": "UTLSRVID",
+    "newColumnName": "Utility_service_area_ID"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column PCANAME to Power_control_area_name",
+    "oldColumnName": "PCANAME",
+    "newColumnName": "Power_control_area_name"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column PCAID to Power_control_area_ID",
+    "oldColumnName": "PCAID",
+    "newColumnName": "Power_control_area_ID"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column CNTYNAME to Plant_county_name",
+    "oldColumnName": "CNTYNAME",
+    "newColumnName": "Plant_county_name"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column FIPSST to Plant_FIPS_State_code",
+    "oldColumnName": "FIPSST",
+    "newColumnName": "Plant_FIPS_State_code"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column FIPSCNTY to Plant_FIPS_county_code",
+    "oldColumnName": "FIPSCNTY",
+    "newColumnName": "Plant_FIPS_county_code"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column SUBRGN to eGRID_subregion_acronym",
+    "oldColumnName": "SUBRGN",
+    "newColumnName": "eGRID_subregion_acronym"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column SRNAME to eGRID_subregion_name",
+    "oldColumnName": "SRNAME",
+    "newColumnName": "eGRID_subregion_name"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column NERC to NERC_region_acronym",
+    "oldColumnName": "NERC",
+    "newColumnName": "NERC_region_acronym"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column OPPRNAME to Parent_company_name_associated_with_the_operator",
+    "oldColumnName": "OPPRNAME",
+    "newColumnName": "Parent_company_name_associated_with_the_operator"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column OPPRNUM to Parent_company_ID_associated_with_the_operator",
+    "oldColumnName": "OPPRNUM",
+    "newColumnName": "Parent_company_ID_associated_with_the_operator"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Fuel_group at index 27 based on column PLPRMFL using expression grel:value",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "Fuel_group",
+    "columnInsertIndex": 27,
+    "baseColumnName": "PLPRMFL",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column NumberOfGenerators to Number_of_boilers",
+    "oldColumnName": "NumberOfGenerators",
+    "newColumnName": "Number_of_boilers"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column NumberOfBoilers to Number_of_generators",
+    "oldColumnName": "NumberOfBoilers",
+    "newColumnName": "Number_of_generators"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_group using expression grel:value.replace(/^AB$/, 'Solid fuel').replace(/^BFG$/, 'Gaseous fuel').replace(/^BIT$/, 'Solid fuel').replace(/^BLQ$/, 'Solid fuel').replace(/^COG$/, 'Gaseous fuel').replace(/^DFO$/, 'Liquid fuel').replace(/^DG$/, 'Gaseous fuel').replace(/^HY$/, 'Gaseous fuel').replace(/^JF$/, 'Liquid fuel').replace(/^KER$/, 'Liquid fuel').replace(/^LB$/, 'Liquid fuel').replace(/^LFG$/, 'Gaseous fuel').replace(/^LIG$/, 'Solid fuel').replace(/^ME$/, 'Gaseous fuel').replace(/^MH$/, 'Liquid fuel').replace(/^MSB$/, 'Solid fuel').replace(/^MSF$/, 'Solid fuel').replace(/^NG$/, 'Gaseous fuel').replace(/^OBL$/, 'Liquid fuel').replace(/^OBS$/, 'Solid fuel').replace(/^OG$/, 'Gaseous fuel').replace(/^OOL$/, 'Liquid fuel').replace(/^PC$/, 'Solid fuel').replace(/^PG$/, 'Gaseous fuel').replace(/^PP$/, 'Solid fuel').replace(/^PRG$/, 'Gaseous fuel').replace(/^RFO$/, 'Liquid fuel').replace(/^RG$/, 'Gaseous fuel').replace(/^SC$/, 'Solid fuel').replace(/^SLW$/, 'Solid fuel').replace(/^SUB$/, 'Solid fuel').replace(/^TDF$/, 'Solid fuel').replace(/^WC$/, 'Solid fuel').replace(/^WDL$/, 'Liquid fuel').replace(/^WDS$/, 'Solid fuel').replace(/^WO$/, 'Liquid fuel')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_group",
+    "expression": "grel:value.replace(/^AB$/, 'Solid fuel').replace(/^BFG$/, 'Gaseous fuel').replace(/^BIT$/, 'Solid fuel').replace(/^BLQ$/, 'Solid fuel').replace(/^COG$/, 'Gaseous fuel').replace(/^DFO$/, 'Liquid fuel').replace(/^DG$/, 'Gaseous fuel').replace(/^HY$/, 'Gaseous fuel').replace(/^JF$/, 'Liquid fuel').replace(/^KER$/, 'Liquid fuel').replace(/^LB$/, 'Liquid fuel').replace(/^LFG$/, 'Gaseous fuel').replace(/^LIG$/, 'Solid fuel').replace(/^ME$/, 'Gaseous fuel').replace(/^MH$/, 'Liquid fuel').replace(/^MSB$/, 'Solid fuel').replace(/^MSF$/, 'Solid fuel').replace(/^NG$/, 'Gaseous fuel').replace(/^OBL$/, 'Liquid fuel').replace(/^OBS$/, 'Solid fuel').replace(/^OG$/, 'Gaseous fuel').replace(/^OOL$/, 'Liquid fuel').replace(/^PC$/, 'Solid fuel').replace(/^PG$/, 'Gaseous fuel').replace(/^PP$/, 'Solid fuel').replace(/^PRG$/, 'Gaseous fuel').replace(/^RFO$/, 'Liquid fuel').replace(/^RG$/, 'Gaseous fuel').replace(/^SC$/, 'Solid fuel').replace(/^SLW$/, 'Solid fuel').replace(/^SUB$/, 'Solid fuel').replace(/^TDF$/, 'Solid fuel').replace(/^WC$/, 'Solid fuel').replace(/^WDL$/, 'Liquid fuel').replace(/^WDS$/, 'Solid fuel').replace(/^WO$/, 'Liquid fuel')",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_group using expression grel:value.replace(/^GEO$/, 'Geothermal').replace(/^NUC$/, 'Nuclear').replace(/^OTH$/, 'Other').replace(/^SUN$/, 'Solar').replace(/^WAT$/, 'Water').replace(/^WND$/, 'Wind')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_group",
+    "expression": "grel:value.replace(/^GEO$/, 'Geothermal').replace(/^NUC$/, 'Nuclear').replace(/^OTH$/, 'Other').replace(/^SUN$/, 'Solar').replace(/^WAT$/, 'Water').replace(/^WND$/, 'Wind')",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Fuel_description at index 27 based on column PLPRMFL using expression grel:value",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "Fuel_description",
+    "columnInsertIndex": 27,
+    "baseColumnName": "PLPRMFL",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column PlantCombustionStatus to Plant_combustion_status",
+    "oldColumnName": "PlantCombustionStatus",
+    "newColumnName": "Plant_combustion_status"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^AB$/, 'Agricultural byproducts').replace(/^BFG$/, 'Blast furnace gas').replace(/^BIT$/, 'Bituminous coal').replace(/^BLQ$/, 'Black liquor').replace(/^COG$/, 'Coke oven gas').replace(/^DFO$/, 'Distillate/diesel oil').replace(/^DG$/, 'Digester gas').replace(/^HY$/, 'Hydrogen').replace(/^JF$/, 'Jet fuel').replace(/^KER$/, 'Kerosene').replace(/^LB$/, 'Liquid byproducts').replace(/^LFG$/, 'Landfill gas').replace(/^LIG$/, 'Lignite coal').replace(/^ME$/, 'Methane').replace(/^MH$/, 'Methanol').replace(/^MSB$/, 'MSW biomass component').replace(/^MSF$/, 'MSW other fossil part').replace(/^NG$/, 'Natural gas').replace(/^OBL$/, 'Other biomass liquid').replace(/^OBS$/, 'Other biomass solids').replace(/^OG$/, 'Other gas').replace(/^OOL$/, 'Other oil').replace(/^PC$/, 'Petroleum coke').replace(/^PG$/, 'Propane gas/LPG').replace(/^PP$/, 'Paper pellets').replace(/^PRG$/, 'Process gas').replace(/^RFO$/, 'Residual oil').replace(/^RG$/, 'Refinery gas').replace(/^SC$/, 'Syncoal').replace(/^SLW$/, 'Sludge waste').replace(/^SUB$/, 'Subbituminous coal').replace(/^TDF$/, 'Tire-derived fuel').replace(/^WC$/, 'Waste coal').replace(/^WDL$/, 'Wood, wood waste liquids').replace(/^WDS$/, 'Wood, wood waste solids').replace(/^WO$/, 'Waste oil')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^AB$/, 'Agricultural byproducts').replace(/^BFG$/, 'Blast furnace gas').replace(/^BIT$/, 'Bituminous coal').replace(/^BLQ$/, 'Black liquor').replace(/^COG$/, 'Coke oven gas').replace(/^DFO$/, 'Distillate/diesel oil').replace(/^DG$/, 'Digester gas').replace(/^HY$/, 'Hydrogen').replace(/^JF$/, 'Jet fuel').replace(/^KER$/, 'Kerosene').replace(/^LB$/, 'Liquid byproducts').replace(/^LFG$/, 'Landfill gas').replace(/^LIG$/, 'Lignite coal').replace(/^ME$/, 'Methane').replace(/^MH$/, 'Methanol').replace(/^MSB$/, 'MSW biomass component').replace(/^MSF$/, 'MSW other fossil part').replace(/^NG$/, 'Natural gas').replace(/^OBL$/, 'Other biomass liquid').replace(/^OBS$/, 'Other biomass solids').replace(/^OG$/, 'Other gas').replace(/^OOL$/, 'Other oil').replace(/^PC$/, 'Petroleum coke').replace(/^PG$/, 'Propane gas/LPG').replace(/^PP$/, 'Paper pellets').replace(/^PRG$/, 'Process gas').replace(/^RFO$/, 'Residual oil').replace(/^RG$/, 'Refinery gas').replace(/^SC$/, 'Syncoal').replace(/^SLW$/, 'Sludge waste').replace(/^SUB$/, 'Subbituminous coal').replace(/^TDF$/, 'Tire-derived fuel').replace(/^WC$/, 'Waste coal').replace(/^WDL$/, 'Wood, wood waste liquids').replace(/^WDS$/, 'Wood, wood waste solids').replace(/^WO$/, 'Waste oil')",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^GEO$/, 'Geothermal').replace(/^NUC$/, 'Nuclear').replace(/^OTH$/, 'Other').replace(/^SUN$/, 'Solar').replace(/^WAT$/, 'Water').replace(/^WND$/, 'Wind')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^GEO$/, 'Geothermal').replace(/^NUC$/, 'Nuclear').replace(/^OTH$/, 'Other').replace(/^SUN$/, 'Solar').replace(/^WAT$/, 'Water').replace(/^WND$/, 'Wind')",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column CAPFAC to Plant_capacity_factor",
+    "oldColumnName": "CAPFAC",
+    "newColumnName": "Plant_capacity_factor"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column PlantNameplateCapacityMW to Plant_nameplate_capacity_MW",
+    "oldColumnName": "PlantNameplateCapacityMW",
+    "newColumnName": "Plant_nameplate_capacity_MW"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column UsesAnyAmountOfCoal to Uses_any_amount_of_coal",
+    "oldColumnName": "UsesAnyAmountOfCoal",
+    "newColumnName": "Uses_any_amount_of_coal"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column PSFLAG to Plant_pumped_storage",
+    "oldColumnName": "PSFLAG",
+    "newColumnName": "Plant_pumped_storage"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Plant_pumped_storage using expression grel:value.replace('0', 'false').replace('1', 'true')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Plant_pumped_storage",
+    "expression": "grel:value.replace('0', 'false').replace('1', 'true')",
+    "onError": "set-to-blank",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column State at index 2 based on column State_abbreviation using expression grel:value.replace(/^AL$/, 'Alabama').replace(/^AK$/, 'Alaska').replace(/^AZ$/, 'Arizona').replace(/^AR$/, 'Arkansas').replace(/^CA$/, 'California').replace(/^CO$/, 'Colorado').replace(/^CT$/, 'Connecticut').replace(/^DE$/, 'Delaware').replace(/^FL$/, 'Florida').replace(/^GA$/, 'Georgia').replace(/^HI$/, 'Hawaii').replace(/^ID$/, 'Idaho').replace(/^IL$/, 'Illinois').replace(/^IN$/, 'Indiana').replace(/^IA$/, 'Iowa').replace(/^KS$/, 'Kansas').replace(/^KY$/, 'Kentucky').replace(/^LA$/, 'Louisiana').replace(/^ME$/, 'Maine').replace(/^MD$/, 'Maryland').replace(/^MA$/, 'Massachusetts').replace(/^MI$/, 'Michigan').replace(/^MN$/, 'Minnesota').replace(/^MS$/, 'Mississippi').replace(/^MO$/, 'Missouri').replace(/^MT$/, 'Montana').replace(/^NE$/, 'Nebraska').replace(/^NV$/, 'Nevada').replace(/^NH$/, 'New Hampshire').replace(/^NJ$/, 'New Jersey').replace(/^NM$/, 'New Mexico').replace(/^NY$/, 'New York').replace(/^NC$/, 'North Carolina').replace(/^ND$/, 'North Dakota').replace(/^OH$/, 'Ohio').replace(/^OK$/, 'Oklahoma').replace(/^OR$/, 'Oregon').replace(/^PA$/, 'Pennsylvania').replace(/^RI$/, 'Rhode Island').replace(/^SC$/, 'South Carolina').replace(/^SD$/, 'South Dakota').replace(/^TN$/, 'Tennessee').replace(/^TX$/, 'Texas').replace(/^UT$/, 'Utah').replace(/^VT$/, 'Vermont').replace(/^VA$/, 'Virginia').replace(/^WA$/, 'Washington').replace(/^WV$/, 'West Virginia').replace(/^WI$/, 'Wisconsin').replace(/^WY$/, 'Wyoming').replace(/^AS$/, 'American Samoa').replace(/^DC$/, 'District of Columbia').replace(/^FM$/, 'Federated States of Micronesia').replace(/^GU$/, 'Guam').replace(/^MH$/, 'Marshall Islands').replace(/^MP$/, 'Northern Mariana Islands').replace(/^PW$/, 'Palau').replace(/^PR$/, 'Puerto Rico').replace(/^VI$/, 'Virgin Islands')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "State",
+    "columnInsertIndex": 2,
+    "baseColumnName": "State_abbreviation",
+    "expression": "grel:value.replace(/^AL$/, 'Alabama').replace(/^AK$/, 'Alaska').replace(/^AZ$/, 'Arizona').replace(/^AR$/, 'Arkansas').replace(/^CA$/, 'California').replace(/^CO$/, 'Colorado').replace(/^CT$/, 'Connecticut').replace(/^DE$/, 'Delaware').replace(/^FL$/, 'Florida').replace(/^GA$/, 'Georgia').replace(/^HI$/, 'Hawaii').replace(/^ID$/, 'Idaho').replace(/^IL$/, 'Illinois').replace(/^IN$/, 'Indiana').replace(/^IA$/, 'Iowa').replace(/^KS$/, 'Kansas').replace(/^KY$/, 'Kentucky').replace(/^LA$/, 'Louisiana').replace(/^ME$/, 'Maine').replace(/^MD$/, 'Maryland').replace(/^MA$/, 'Massachusetts').replace(/^MI$/, 'Michigan').replace(/^MN$/, 'Minnesota').replace(/^MS$/, 'Mississippi').replace(/^MO$/, 'Missouri').replace(/^MT$/, 'Montana').replace(/^NE$/, 'Nebraska').replace(/^NV$/, 'Nevada').replace(/^NH$/, 'New Hampshire').replace(/^NJ$/, 'New Jersey').replace(/^NM$/, 'New Mexico').replace(/^NY$/, 'New York').replace(/^NC$/, 'North Carolina').replace(/^ND$/, 'North Dakota').replace(/^OH$/, 'Ohio').replace(/^OK$/, 'Oklahoma').replace(/^OR$/, 'Oregon').replace(/^PA$/, 'Pennsylvania').replace(/^RI$/, 'Rhode Island').replace(/^SC$/, 'South Carolina').replace(/^SD$/, 'South Dakota').replace(/^TN$/, 'Tennessee').replace(/^TX$/, 'Texas').replace(/^UT$/, 'Utah').replace(/^VT$/, 'Vermont').replace(/^VA$/, 'Virginia').replace(/^WA$/, 'Washington').replace(/^WV$/, 'West Virginia').replace(/^WI$/, 'Wisconsin').replace(/^WY$/, 'Wyoming').replace(/^AS$/, 'American Samoa').replace(/^DC$/, 'District of Columbia').replace(/^FM$/, 'Federated States of Micronesia').replace(/^GU$/, 'Guam').replace(/^MH$/, 'Marshall Islands').replace(/^MP$/, 'Northern Mariana Islands').replace(/^PW$/, 'Palau').replace(/^PR$/, 'Puerto Rico').replace(/^VI$/, 'Virgin Islands')",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Plant_operator at index 7 based on column Plant_operator_name using expression grel:escape(value, 'url')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "Plant_operator",
+    "columnInsertIndex": 7,
+    "baseColumnName": "Plant_operator_name",
+    "expression": "grel:escape(value, 'url')",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column wgs_point at index 23 based on column LON using expression grel:'POINT('+cells[\"LON\"].value+' '+cells[\"LAT\"].value+')'",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "wgs_point",
+    "columnInsertIndex": 23,
+    "baseColumnName": "LON",
+    "expression": "grel:'POINT('+cells[\"LON\"].value+' '+cells[\"LAT\"].value+')'",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column PLPRMFL to Plant_primary_fuel",
+    "oldColumnName": "PLPRMFL",
+    "newColumnName": "Plant_primary_fuel"
+  },
+  {
+    "op": "rdf-extension/save-rdf-schema",
+    "description": "Save RDF schema skeleton",
+    "schema": {
+      "baseUri": "http://enipedia.tudelft.nl/data/eGRID/",
+      "prefixes": [
+        {
+          "name": "egrid",
+          "uri": "http://enipedia.tudelft.nl/data/eGRID/"
+        },
+        {
+          "name": "rdfs",
+          "uri": "http://www.w3.org/2000/01/rdf-schema#"
+        },
+        {
+          "name": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
+        },
+        {
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        },
+        {
+          "name": "wgs84",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "egridprop",
+          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/"
+        }
+      ],
+      "rootNodes": [
+        {
+          "nodeType": "cell-as-resource",
+          "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+value",
+          "isRowNumberCell": false,
+          "columnName": "ORISPL",
+          "rdfTypes": [
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/Plant",
+              "curie": "egrid:Plant"
+            }
+          ],
+          "links": [
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM01\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner1', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC01",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM01"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC01"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM01\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR01"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM02\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner2', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC02",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM02"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC02"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM02\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR02"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM03\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner3', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC03",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM03"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC03"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM03\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR03"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM04\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner4', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC04",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM04"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC04"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM04\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR04"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM05\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner5', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC05",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM05"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC05"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM05\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR05"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM06\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner6', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC06",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM06"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC06"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM06\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR06"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM07\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner7', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC07",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM07"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC07"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM07\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR07"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM08\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner8', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC08",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM08"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC08"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM08\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR08"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM09\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner9', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC09",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM09"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC09"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM09\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR09"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM10\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner10', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC10",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM10"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC10"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM10\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR10"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM11\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner11', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC11",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM11"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC11"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM11\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR11"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM12\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner12', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC12",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM12"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC12"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM12\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR12"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM13\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner13', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC13",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM13"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC13"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM13\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR13"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM14\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner14', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC14",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM14"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC14"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM14\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR14"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM15\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner15', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC15",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM15"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC15"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM15\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR15"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnershipInfo",
+              "curie": "egridprop:OwnershipInfo",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(isNonBlank(cells[\"OWNRNM16\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Ownership/'+cells[\"year\"].value+'/Owner16', '')",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owner",
+                    "curie": "egridprop:Owner",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PlantOwner/'+value",
+                      "isRowNumberCell": false,
+                      "columnName": "OWNRUC16",
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/PlantOwner",
+                          "curie": "egrid:PlantOwner"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRNM16"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/OwnerCode",
+                          "curie": "egridprop:OwnerCode",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "OWNRUC16"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Owns",
+                          "curie": "egridprop:Owns",
+                          "target": {
+                            "nodeType": "cell-as-resource",
+                            "expression": "if(isNonBlank(cells[\"OWNRNM16\"].value), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value, '')",
+                            "isRowNumberCell": true,
+                            "rdfTypes": [],
+                            "links": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/PercentOwnership",
+                    "curie": "egridprop:PercentOwnership",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "OWNRPR16"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/eGRID2007_2005_file_plant_sequence_number",
+              "curie": "egridprop:eGRID2007_2005_file_plant_sequence_number",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "ORISPL"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/State_abbreviation",
+              "curie": "egridprop:State_abbreviation",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "State_abbreviation"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Plant_name",
+              "curie": "egridprop:Plant_name",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "Plant_name"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/State",
+              "curie": "egridprop:State",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/State/'+value",
+                "isRowNumberCell": false,
+                "columnName": "State",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "State"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Abbreviation",
+                    "curie": "egridprop:Abbreviation",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "State_abbreviation"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Emissions",
+              "curie": "egridprop:Annual_Emissions",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLSO2AN\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Emissions/'+cells[\"year\"].value+'/SO2', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "SO2"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLSO2AN"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "tons"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Emissions",
+              "curie": "egridprop:Annual_Emissions",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLCO2AN\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Emissions/'+cells[\"year\"].value+'/CO2', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "CO2"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLCO2AN"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "tons"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Emissions",
+              "curie": "egridprop:Annual_Emissions",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLCH4AN\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Emissions/'+cells[\"year\"].value+'/CH4', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "CH4"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLCH4AN"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lbs"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Emissions",
+              "curie": "egridprop:Annual_Emissions",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLN2OAN\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Emissions/'+cells[\"year\"].value+'/N2O', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "N2O"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLN2OAN"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lbs"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Emissions",
+              "curie": "egridprop:Annual_Emissions",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLHGAN\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Emissions/'+cells[\"year\"].value+'/Hg', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Hg"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLHGAN"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lbs"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Emissions",
+              "curie": "egridprop:Annual_Emissions",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLNOXAN\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Emissions/'+cells[\"year\"].value+'/NOx', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "NOx"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLNOXAN"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "tons"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLSO2RTA\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Output_Emission_Rate/'+cells[\"year\"].value+'/SO2', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "SO2"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLSO2RTA"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLCO2RTA\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Output_Emission_Rate/'+cells[\"year\"].value+'/CO2', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "CO2"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLCO2RTA"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLCH4RTA\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Output_Emission_Rate/'+cells[\"year\"].value+'/CH4', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "CH4"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLCH4RTA"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/GWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLN2ORTA\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Output_Emission_Rate/'+cells[\"year\"].value+'/N2O', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "N2O"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLN2ORTA"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/GWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLHGRTA\"].value == \"N/A\", '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Output_Emission_Rate/'+cells[\"year\"].value+'/Hg')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Hg"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLHGRTA"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/GWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Input_Emission_Rate",
+              "curie": "egridprop:Annual_Input_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLSO2RA\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Input_Emission_Rate/'+cells[\"year\"].value+'/SO2', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "SO2"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLSO2RA"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/MMBtu"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Input_Emission_Rate",
+              "curie": "egridprop:Annual_Input_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLCO2RA\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Input_Emission_Rate/'+cells[\"year\"].value+'/CO2', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "CO2"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLCO2RA"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/MMBtu"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Input_Emission_Rate",
+              "curie": "egridprop:Annual_Input_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLNOXRA\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Input_Emission_Rate/'+cells[\"year\"].value+'/NOx', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "NOx"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLNOXRA"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/MMBtu"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Input_Emission_Rate",
+              "curie": "egridprop:Annual_Input_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLHGRA\"].value == \"N/A\", '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Input_Emission_Rate/'+cells[\"year\"].value+'/Hg')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Hg"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLHGRA"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/BBtu"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENACL\"].value > 0, not(cells[\"PLGENACL\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Coal', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Coal"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENACL"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENAOL\"].value > 0, not(cells[\"PLGENAOL\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Oil', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Oil"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENAOL"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENAGS\"].value > 0, not(cells[\"PLGENAGS\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Gas', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Gas"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENAGS"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENANC\"].value > 0, not(cells[\"PLGENANC\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Nuclear', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Nuclear"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENANC"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENAHY\"].value > 0, not(cells[\"PLGENAHY\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Hydro', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Hydro"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENAHY"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENABM\"].value > 0, not(cells[\"PLGENABM\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Biomass', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Biomass"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENABM"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENAWI\"].value > 0, not(cells[\"PLGENAWI\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Wind', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Wind"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENAWI"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENASO\"].value > 0, not(cells[\"PLGENASO\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Solar', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Solar"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENASO"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENAGT\"].value > 0, not(cells[\"PLGENAGT\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Geothermal', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Geothermal"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENAGT"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENAOF\"].value > 0, not(cells[\"PLGENAOF\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Other_fossil', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Other fossil"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENAOF"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation_By_Fuel",
+              "curie": "egridprop:Annual_Net_Generation_By_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLGENAOP\"].value > 0, not(cells[\"PLGENAOP\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation_By_Fuel/'+cells[\"year\"].value+'/Other_unknown_or_purchased_fuel', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Other unknown/ purchased fuel"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGENAOP"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLCLPR\"].value == 0, cells[\"PLCLPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Coal')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Coal"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLCLPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLOLPR\"].value == 0, cells[\"PLOLPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Oil')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Oil"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLOLPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLGSPR\"].value == 0, cells[\"PLGSPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Gas')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Gas"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGSPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLNCPR\"].value == 0, cells[\"PLNCPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Nuclear')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Nuclear"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLNCPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLHYPR\"].value == 0, cells[\"PLHYPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Hydro')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Hydro"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLHYPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLBMPR\"].value == 0, cells[\"PLBMPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Biomass')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Biomass"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLBMPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLWIPR\"].value == 0, cells[\"PLWIPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Wind')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Wind"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLWIPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLSOPR\"].value == 0, cells[\"PLSOPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Solar')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Solar"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLSOPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLGTPR\"].value == 0, cells[\"PLGTPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Geothermal')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Geothermal"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLGTPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLOFPR\"].value == 0, cells[\"PLOFPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Other_fossil')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Other fossil"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLOFPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Generation_Percent",
+              "curie": "egridprop:Generation_Percent",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(or(cells[\"PLOPPR\"].value == 0, cells[\"PLOPPR\"].value == \"N/A\"), '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generation_Percent/'+cells[\"year\"].value+'/Other_unknown_or_purchased_fuel')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Other unknown / purchased fuel"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLOPPR"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Combustion_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Combustion_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLNOXCRT\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Combustion_Output_Emission_Rate/'+cells[\"year\"].value+'/NOx', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "NOx"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLNOXCRT"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Combustion_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Combustion_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLSO2CRT\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Combustion_Output_Emission_Rate/'+cells[\"year\"].value+'/SO2', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "SO2"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLSO2CRT"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Combustion_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Combustion_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLCO2CRT\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Combustion_Output_Emission_Rate/'+cells[\"year\"].value+'/CO2', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "CO2"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLCO2CRT"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Combustion_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Combustion_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLCH4CRT\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Combustion_Output_Emission_Rate/'+cells[\"year\"].value+'/CH4', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "CH4"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLCH4CRT"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/GWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Combustion_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Combustion_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLN2OCRT\"].value > 0, 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Combustion_Output_Emission_Rate/'+cells[\"year\"].value+'/N2O', '')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "N2O"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLN2OCRT"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/GWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Combustion_Output_Emission_Rate",
+              "curie": "egridprop:Annual_Combustion_Output_Emission_Rate",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"PLHGCRT\"].value == \"N/A\", '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Combustion_Output_Emission_Rate/'+cells[\"year\"].value+'/Hg')",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "Hg"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLHGCRT"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "lb/GWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+              "curie": "rdfs:label",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "Plant_name"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Plant_capacity_factor",
+              "curie": "egridprop:Plant_capacity_factor",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(cells[\"Plant_capacity_factor\"].value == \"N/A\", '', 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Plant_Capacity_Factor/'+cells[\"year\"].value)",
+                "isRowNumberCell": false,
+                "columnName": "Plant_capacity_factor",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "Plant_capacity_factor"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "percent"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Plant_nameplate_capacity_MW",
+              "curie": "egridprop:Plant_nameplate_capacity_MW",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(not(cells[\"Plant_nameplate_capacity_MW\"].value == 0), not(cells[\"Plant_nameplate_capacity_MW\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Plant_Nameplate_Capacity/'+cells[\"year\"].value, '')",
+                "isRowNumberCell": false,
+                "columnName": "Plant_nameplate_capacity_MW",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "Plant_nameplate_capacity_MW"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MW"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#geometry",
+              "curie": "wgs84:geometry",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "columnName": "wgs_point"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Plant_primary_fuel",
+              "curie": "egridprop:Plant_primary_fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Fuel/'+value",
+                "isRowNumberCell": false,
+                "columnName": "Plant_primary_fuel",
+                "rdfTypes": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/Fuel",
+                    "curie": "egrid:Fuel"
+                  }
+                ],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "Fuel_description"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Plant_primary_fuel_category",
+              "curie": "egridprop:Plant_primary_fuel_category",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Fuel_Category/'+value",
+                "isRowNumberCell": false,
+                "columnName": "PLFUELCT",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "curie": "rdfs:label",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "columnName": "Fuel_group"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Annual_Net_Generation",
+              "curie": "egridprop:Annual_Net_Generation",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "if(and(cells[\"PLNGENAN\"].value > 0, not(cells[\"PLNGENAN\"].value == \"N/A\")), 'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Annual_Net_Generation/'+cells[\"year\"].value, '')",
+                "isRowNumberCell": false,
+                "columnName": "PLNGENAN",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
+                    "curie": "egridprop:Amount",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                      "columnName": "PLNGENAN"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Units",
+                    "curie": "egridprop:Units",
+                    "target": {
+                      "nodeType": "literal",
+                      "value": "MWh"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Lat",
+              "curie": "egridprop:Lat",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                "columnName": "LAT"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Lon",
+              "curie": "egridprop:Lon",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "value",
+                "isRowNumberCell": false,
+                "valueType": "http://www.w3.org/2001/XMLSchema#double",
+                "columnName": "LON"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Point",
+              "curie": "egridprop:Point",
+              "target": {
+                "nodeType": "cell-as-literal",
+                "expression": "cells[\"LAT\"].value+', '+cells[\"LON\"].value",
+                "isRowNumberCell": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
