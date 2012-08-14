@@ -1,6 +1,6 @@
 <h2>eGRID to RDF</h2>
 
-This code is used for converting the <a href="http://www.epa.gov/cleanenergy/energy-resources/egrid/index.html">eGRID dataset from the US EPA</a> into RDF, allowing for sophisticated queries to be run over the data.
+This code is used for converting the <a href="http://www.epa.gov/cleanenergy/energy-resources/egrid/index.html">eGRID dataset from the US EPA</a> into RDF, allowing for sophisticated queries to be run over the data.  The eGRID data is available from the US EPA as a series of Excel files for several years.  This is great for looking up facts for a single power plant for a single year, but this is not an ideal format if you want to do more extensive types of data mining.  
 
 <h3>Instructions</h3>
 
