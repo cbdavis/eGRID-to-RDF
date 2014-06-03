@@ -27,11 +27,11 @@ The <a href="http://enipedia.tudelft.nl/wiki/Navajo_Powerplant">Navajo Generatin
 By converting the data to <a href="http://en.wikipedia.org/wiki/Resource_Description_Framework">RDF</a>, we are able to run <a href="http://en.wikipedia.org/wiki/SPARQL">SPARQL</a> queries and very efficiently retrieve various views of the data.  For example, by using the identifier in the ORISPL columns of the spreadsheets, the SPARQL query below (run at http://enipedia.tudelft.nl/extdata/sparql) will show all of the emissions for every year for that particular plant (<a href="http://enipedia.tudelft.nl/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+plant%3A+%3Chttp%3A%2F%2Fenipedia.tudelft.nl%2Fdata%2FeGRID%2FPlant%2F%3E%0D%0APREFIX+egridprop%3A+%3Chttp%3A%2F%2Fenipedia.tudelft.nl%2Fdata%2FeGRID%2Fprop%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0Aselect+%3FemissionName+%3Famount+%3Fyear+from+%3Chttp%3A%2F%2Fenipedia.tudelft.nl%2Fdata%2FeGRID%3E+%7B%0D%0A++plant%3A4941+egridprop%3AAnnual_Emissions+%3Femissions+.%0D%0A++%3Femissions+egridprop%3AYear+%3Fyear+.+%0D%0A++%3Femissions+egridprop%3AAmount+%3Famount+.+%0D%0A++%3Femissions+rdfs%3Alabel+%3FemissionName+.+%0D%0A%7D+order+by+%3FemissionName+%3Fyear+&format=text%2Fhtml&timeout=0&debug=on">results</a>)
 
 <pre>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX plant: <http://enipedia.tudelft.nl/data/eGRID/Plant/>
-PREFIX egridprop: <http://enipedia.tudelft.nl/data/eGRID/prop/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-select ?emissionName ?amount ?year from <http://enipedia.tudelft.nl/data/eGRID> {
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX plant: &lt;http://enipedia.tudelft.nl/data/eGRID/Plant/&gt;
+PREFIX egridprop: &lt;http://enipedia.tudelft.nl/data/eGRID/prop/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+select ?emissionName ?amount ?year from &lt;http://enipedia.tudelft.nl/data/eGRID&gt; {
   plant:4941 egridprop:Annual_Emissions ?emissions .
   ?emissions egridprop:Year ?year . 
   ?emissions egridprop:Amount ?amount . 
