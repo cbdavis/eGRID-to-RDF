@@ -5,12 +5,12 @@
     "engineConfig": {
       "facets": [
         {
-          "expression": "value",
           "to": 180,
+          "expression": "value",
           "selectError": true,
           "selectNumeric": false,
-          "name": "LON",
           "selectBlank": false,
+          "name": "LON",
           "columnName": "LON",
           "selectNonNumeric": true,
           "from": -170,
@@ -426,20 +426,20 @@
           "uri": "http://xmlns.com/foaf/0.1/"
         },
         {
-          "name": "xsd",
-          "uri": "http://www.w3.org/2001/XMLSchema#"
-        },
-        {
           "name": "owl",
           "uri": "http://www.w3.org/2002/07/owl#"
         },
         {
-          "name": "rdf",
-          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
         },
         {
           "name": "wgs84",
           "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        },
+        {
+          "name": "rdf",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         },
         {
           "name": "egridprop",
@@ -4162,6 +4162,15 @@
                           "target": {
                             "nodeType": "cell-as-literal",
                             "expression": "cells[\"Fuel_description\"].value",
+                            "isRowNumberCell": true
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Abbreviation",
+                          "curie": "egridprop:Abbreviation",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "cells[\"Plant_primary_fuel\"].value",
                             "isRowNumberCell": true
                           }
                         }
