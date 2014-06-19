@@ -229,18 +229,6 @@
     "onError": "set-to-blank"
   },
   {
-    "op": "core/column-rename",
-    "description": "Rename column NumberOfGenerators to Number_of_boilers",
-    "oldColumnName": "NumberOfGenerators",
-    "newColumnName": "Number_of_boilers"
-  },
-  {
-    "op": "core/column-rename",
-    "description": "Rename column NumberOfBoilers to Number_of_generators",
-    "oldColumnName": "NumberOfBoilers",
-    "newColumnName": "Number_of_generators"
-  },
-  {
     "op": "core/text-transform",
     "description": "Text transform on cells in column Fuel_group using expression grel:value.replace(/^AB$/, 'Solid fuel').replace(/^BFG$/, 'Gaseous fuel').replace(/^BIT$/, 'Solid fuel').replace(/^BLQ$/, 'Solid fuel').replace(/^COG$/, 'Gaseous fuel').replace(/^DFO$/, 'Liquid fuel').replace(/^DG$/, 'Gaseous fuel').replace(/^HY$/, 'Gaseous fuel').replace(/^JF$/, 'Liquid fuel').replace(/^KER$/, 'Liquid fuel').replace(/^LB$/, 'Liquid fuel').replace(/^LFG$/, 'Gaseous fuel').replace(/^LIG$/, 'Solid fuel').replace(/^ME$/, 'Gaseous fuel').replace(/^MH$/, 'Liquid fuel').replace(/^MSB$/, 'Solid fuel').replace(/^MSF$/, 'Solid fuel').replace(/^NG$/, 'Gaseous fuel').replace(/^OBL$/, 'Liquid fuel').replace(/^OBS$/, 'Solid fuel').replace(/^OG$/, 'Gaseous fuel').replace(/^OOL$/, 'Liquid fuel').replace(/^PC$/, 'Solid fuel').replace(/^PG$/, 'Gaseous fuel').replace(/^PP$/, 'Solid fuel').replace(/^PRG$/, 'Gaseous fuel').replace(/^RFO$/, 'Liquid fuel').replace(/^RG$/, 'Gaseous fuel').replace(/^SC$/, 'Solid fuel').replace(/^SLW$/, 'Solid fuel').replace(/^SUB$/, 'Solid fuel').replace(/^TDF$/, 'Solid fuel').replace(/^WC$/, 'Solid fuel').replace(/^WDL$/, 'Liquid fuel').replace(/^WDS$/, 'Solid fuel').replace(/^WO$/, 'Liquid fuel')",
     "engineConfig": {
@@ -392,6 +380,32 @@
     "description": "Rename column PLPRMFL to Plant_primary_fuel",
     "oldColumnName": "PLPRMFL",
     "newColumnName": "Plant_primary_fuel"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column PLNGENOZ using expression grel:value.replace(\",\", \"\")",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PLNGENOZ",
+    "expression": "grel:value.replace(\",\", \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column PLNGENOZ using expression value.toNumber()",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PLNGENOZ",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
   },
   {
     "op": "rdf-extension/save-rdf-schema",
@@ -4112,47 +4126,98 @@
               "curie": "egridprop:Plant_primary_fuel",
               "target": {
                 "nodeType": "cell-as-resource",
-                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Fuel/'+value",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Plant_Primary_Fuel/'+cells[\"year\"].value",
                 "isRowNumberCell": false,
                 "columnName": "Plant_primary_fuel",
-                "rdfTypes": [
-                  {
-                    "uri": "http://enipedia.tudelft.nl/data/eGRID/Fuel",
-                    "curie": "egrid:Fuel"
-                  }
-                ],
-                "links": [
-                  {
-                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
-                    "curie": "rdfs:label",
-                    "target": {
-                      "nodeType": "cell-as-literal",
-                      "expression": "value",
-                      "isRowNumberCell": false,
-                      "columnName": "Fuel_description"
-                    }
-                  }
-                ]
-              }
-            },
-            {
-              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Plant_primary_fuel_category",
-              "curie": "egridprop:Plant_primary_fuel_category",
-              "target": {
-                "nodeType": "cell-as-resource",
-                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Fuel_Category/'+value",
-                "isRowNumberCell": false,
-                "columnName": "PLFUELCT",
                 "rdfTypes": [],
                 "links": [
                   {
-                    "uri": "http://www.w3.org/2000/01/rdf-schema#label",
-                    "curie": "rdfs:label",
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
                     "target": {
                       "nodeType": "cell-as-literal",
                       "expression": "value",
                       "isRowNumberCell": false,
-                      "columnName": "Fuel_group"
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Fuel",
+                    "curie": "egridprop:Fuel",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/Fuel/' + cells[\"Plant_primary_fuel\"].value",
+                      "isRowNumberCell": true,
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/Fuel",
+                          "curie": "egrid:Fuel"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "cells[\"Fuel_description\"].value",
+                            "isRowNumberCell": true
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/FuelCategory",
+                    "curie": "egridprop:FuelCategory",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/FuelCategory/' + cells[\"PLPFGNCT\"].value",
+                      "isRowNumberCell": true,
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/FuelCategory",
+                          "curie": "egrid:FuelCategory"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "cells[\"PLPFGNCT\"].value",
+                            "isRowNumberCell": true
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/FossilFuelCategory",
+                    "curie": "egridprop:FossilFuelCategory",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/FossilFuelCategory/' + cells[\"PLFUELCT\"].value",
+                      "isRowNumberCell": true,
+                      "rdfTypes": [
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/FossilFuelCategory",
+                          "curie": "egrid:FossilFuelCategory"
+                        }
+                      ],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "cells[\"PLFUELCT\"].value",
+                            "isRowNumberCell": true
+                          }
+                        }
+                      ]
                     }
                   }
                 ]
