@@ -13,6 +13,188 @@
     "onError": "set-to-blank"
   },
   {
+    "op": "core/column-addition",
+    "description": "Create column Fuel_description at index 13 based on column FUELG1 using expression grel:value",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "Fuel_description",
+    "columnInsertIndex": 13,
+    "baseColumnName": "FUELG1",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^AB$/,'Agricultural byproducts').replace(/^AC$/,'Anthracite culm').replace(/^ANT$/,'Coal').replace(/^BFG$/,'Blast furnace gas').replace(/^BG$/,'Bituminous gob').replace(/^BIT$/,'Bituminous coal').replace(/^BL$/,'Black liquor').replace(/^BLQ$/,'Black liquor').replace(/^BP$/,'Butane (liquid)')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^AB$/,'Agricultural byproducts').replace(/^AC$/,'Anthracite culm').replace(/^ANT$/,'Coal').replace(/^BFG$/,'Blast furnace gas').replace(/^BG$/,'Bituminous gob').replace(/^BIT$/,'Bituminous coal').replace(/^BL$/,'Black liquor').replace(/^BLQ$/,'Black liquor').replace(/^BP$/,'Butane (liquid)')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^BU$/,'Butane (gas)').replace(/^CB$/,'Coke breeze').replace(/^COL$/,'Coal').replace(/^DFO$/,'Distillate, light fuel oil').replace(/^DG$/,'Digester gas (other biomass gas)').replace(/^DI$/,'Diesel').replace(/^FC$/,'Fine coal').replace(/^FO1$/,'Distillate, light fuel oil').replace(/^FO2$/,'Distillate, light fuel oil')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^BU$/,'Butane (gas)').replace(/^CB$/,'Coke breeze').replace(/^COL$/,'Coal').replace(/^DFO$/,'Distillate, light fuel oil').replace(/^DG$/,'Digester gas (other biomass gas)').replace(/^DI$/,'Diesel').replace(/^FC$/,'Fine coal').replace(/^FO1$/,'Distillate, light fuel oil').replace(/^FO2$/,'Distillate, light fuel oil')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^FO4$/,'Distillate, light fuel oil').replace(/^FO6$/,'Petroleum, heavy, residual oil').replace(/^GAS$/,'Natural gas').replace(/^GE$/,'Geothermal').replace(/^GEO$/,'Geothermal').replace(/^GST$/,'Geothermal').replace(/^HY$/,'Hydrogen').replace(/^JF$/,'Jet fuel').replace(/^KE$/,'Kerosene').replace(/^KER$/,'Kerosene')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^FO4$/,'Distillate, light fuel oil').replace(/^FO6$/,'Petroleum, heavy, residual oil').replace(/^GAS$/,'Natural gas').replace(/^GE$/,'Geothermal').replace(/^GEO$/,'Geothermal').replace(/^GST$/,'Geothermal').replace(/^HY$/,'Hydrogen').replace(/^JF$/,'Jet fuel').replace(/^KE$/,'Kerosene').replace(/^KER$/,'Kerosene')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^LB$/,'Liquid byproduct').replace(/^LF$/,'Landfill gas').replace(/^LFG$/,'Landfill gas').replace(/^LIG$/,'Lignite coal').replace(/^LPG$/,'Propane (liquid)').replace(/^LW$/,'Lignite waste').replace(/^ME$/,'Methane').replace(/^MF$/,'Multi fuel').replace(/^MSB$/,'Municipal solid waste biomass component').replace(/^MSW$/,'Municipal solid waste')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^LB$/,'Liquid byproduct').replace(/^LF$/,'Landfill gas').replace(/^LFG$/,'Landfill gas').replace(/^LIG$/,'Lignite coal').replace(/^LPG$/,'Propane (liquid)').replace(/^LW$/,'Lignite waste').replace(/^ME$/,'Methane').replace(/^MF$/,'Multi fuel').replace(/^MSB$/,'Municipal solid waste biomass component').replace(/^MSW$/,'Municipal solid waste')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^MTE$/,'Methane').replace(/^MW$/,'Medical waste').replace(/^NG$/,'Natural gas').replace(/^NU$/,'Nuclear').replace(/^NUC$/,'Nuclear').replace(/^OBG$/,'Other biomass gases').replace(/^OBL$/,'Other biomass liquids').replace(/^OBS$/,'Other biomass solids').replace(/^OG$/,'Other gas').replace(/^OO$/,'Other oil')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^MTE$/,'Methane').replace(/^MW$/,'Medical waste').replace(/^NG$/,'Natural gas').replace(/^NU$/,'Nuclear').replace(/^NUC$/,'Nuclear').replace(/^OBG$/,'Other biomass gases').replace(/^OBL$/,'Other biomass liquids').replace(/^OBS$/,'Other biomass solids').replace(/^OG$/,'Other gas').replace(/^OO$/,'Other oil')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^OTH$/,'Other unknown').replace(/^OW$/,'Oil waste').replace(/^PC$/,'Petroleum coke').replace(/^PET$/,'Petroleum, heavy, residual oil').replace(/^PG$/,'Propane (gas)').replace(/^PH$/,'Pitch').replace(/^PL$/,'Propane (liquid)').replace(/^PP$/,'Paper pellets').replace(/^PS$/,'Purchased steam').replace(/^PT$/,'Peat')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^OTH$/,'Other unknown').replace(/^OW$/,'Oil waste').replace(/^PC$/,'Petroleum coke').replace(/^PET$/,'Petroleum, heavy, residual oil').replace(/^PG$/,'Propane (gas)').replace(/^PH$/,'Pitch').replace(/^PL$/,'Propane (liquid)').replace(/^PP$/,'Paper pellets').replace(/^PS$/,'Purchased steam').replace(/^PT$/,'Peat')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^PUR$/,'Purchased steam').replace(/^REF$/,'Refuse').replace(/^RFO$/,'Residual fuel oil, heavy fuel oil, petroleum').replace(/^RG$/,'Refinery gas').replace(/^RL$/,'Red liquor').replace(/^RT$/,'Railroad ties').replace(/^SB$/,'Solid byproducts').replace(/^SC$/,'Synthetic coal (syncoal)').replace(/^SL$/,'Solar').replace(/^SLW$/,'Sludge waste')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^PUR$/,'Purchased steam').replace(/^REF$/,'Refuse').replace(/^RFO$/,'Residual fuel oil, heavy fuel oil, petroleum').replace(/^RG$/,'Refinery gas').replace(/^RL$/,'Red liquor').replace(/^RT$/,'Railroad ties').replace(/^SB$/,'Solid byproducts').replace(/^SC$/,'Synthetic coal (syncoal)').replace(/^SL$/,'Solar').replace(/^SLW$/,'Sludge waste')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^SM$/,'Sludge waste').replace(/^SNG$/,'Synthetic natural gas').replace(/^SP$/,'Sludge oil').replace(/^SS$/,'Spent sulfite').replace(/^SU$/,'Solar').replace(/^SUB$/,'Subbituminous coal').replace(/^SUN$/,'Solar').replace(/^SW$/,'Sludge wood').replace(/^TDF$/,'Tire-derived fuel').replace(/^TI$/,'Tires')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^SM$/,'Sludge waste').replace(/^SNG$/,'Synthetic natural gas').replace(/^SP$/,'Sludge oil').replace(/^SS$/,'Spent sulfite').replace(/^SU$/,'Solar').replace(/^SUB$/,'Subbituminous coal').replace(/^SUN$/,'Solar').replace(/^SW$/,'Sludge wood').replace(/^TDF$/,'Tire-derived fuel').replace(/^TI$/,'Tires')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^TO$/,'Tall oil').replace(/^UNK$/,'Unknown').replace(/^UP$/,'Utility poles').replace(/^UR$/,'Nuclear').replace(/^WA$/,'Waste alcohol').replace(/^WAT$/,'Water').replace(/^WC$/,'Waste coal').replace(/^WD$/,'Wood/wood waste').replace(/^WDL$/,'Wood, Wood waste liquid').replace(/^WDS$/,'Wood, Wood waste solid')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^TO$/,'Tall oil').replace(/^UNK$/,'Unknown').replace(/^UP$/,'Utility poles').replace(/^UR$/,'Nuclear').replace(/^WA$/,'Waste alcohol').replace(/^WAT$/,'Water').replace(/^WC$/,'Waste coal').replace(/^WD$/,'Wood/wood waste').replace(/^WDL$/,'Wood, Wood waste liquid').replace(/^WDS$/,'Wood, Wood waste solid')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Fuel_description using expression grel:value.replace(/^WH$/,'Waste heat').replace(/^WN$/,'Wind').replace(/^WND$/,'Wind').replace(/^WO$/,'Waste oil').replace(/^WOC$/,'Waste/other coal').replace(/^WT$/,'Water').replace(/^WW$/,'Wood/wood waste')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Fuel_description",
+    "expression": "grel:value.replace(/^WH$/,'Waste heat').replace(/^WN$/,'Wind').replace(/^WND$/,'Wind').replace(/^WO$/,'Waste oil').replace(/^WOC$/,'Waste/other coal').replace(/^WT$/,'Water').replace(/^WW$/,'Wood/wood waste')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Generator_status at index 11 based on column GENSTAT using expression grel:value",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "Generator_status",
+    "columnInsertIndex": 11,
+    "baseColumnName": "GENSTAT",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Prime_mover at index 13 based on column PRMVR using expression grel:value.replace(/^AB$/,'Atmospheric or pressurized fluidized bed combustion').replace(/^CA$/,'Combined cycle steam turbine with supplementary firing').replace(/^CC$/,'Combined cycle - total unit').replace(/^CE$/,'Compressed air energy storage').replace(/^CH$/,'Steam turbine, common header').replace(/^CS$/,'Combined cycle - single shaft').replace(/^CT$/,'Combined cycle combustion turbine').replace(/^\"CW\"$/,'Combined cycle steam turbine with only waste heat capability').replace(/^FC$/,'Fuel cell').replace(/^GB$/,'Geothermal binary').replace(/^GE$/,'Steam turbine - geothermal').replace(/^GT$/,'Combustion (gas) turbine').replace(/^HL$/,'Hydraulic turbine - pipeline').replace(/^HY$/,'Hydraulic turbine - conventional').replace(/^IC$/,'Internal combustion (diesel)').replace(/^IG$/,'Integrated coal gasification combined cycle').replace(/^JE$/,'Jet engine').replace(/^NB$/,'Steam turbine - boiling water nuclear reactor').replace(/^\"NP\"$/,'Steam turbine - pressurized water nuclear reactor').replace(/^OT$/,'Other').replace(/^PS$/,'Hydraulic turbine - reversible (pumped storage)').replace(/^PV$/,'Photovoltaic').replace(/^SF$/,'Steam turbine fluidized bed combustion').replace(/^SO$/,'Solar (photovoltaic)').replace(/^ST$/,'Steam turbine - boiler').replace(/^WT$/,'Wind turbine')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "Prime_mover",
+    "columnInsertIndex": 13,
+    "baseColumnName": "PRMVR",
+    "expression": "grel:value.replace(/^AB$/,'Atmospheric or pressurized fluidized bed combustion').replace(/^CA$/,'Combined cycle steam turbine with supplementary firing').replace(/^CC$/,'Combined cycle - total unit').replace(/^CE$/,'Compressed air energy storage').replace(/^CH$/,'Steam turbine, common header').replace(/^CS$/,'Combined cycle - single shaft').replace(/^CT$/,'Combined cycle combustion turbine').replace(/^\"CW\"$/,'Combined cycle steam turbine with only waste heat capability').replace(/^FC$/,'Fuel cell').replace(/^GB$/,'Geothermal binary').replace(/^GE$/,'Steam turbine - geothermal').replace(/^GT$/,'Combustion (gas) turbine').replace(/^HL$/,'Hydraulic turbine - pipeline').replace(/^HY$/,'Hydraulic turbine - conventional').replace(/^IC$/,'Internal combustion (diesel)').replace(/^IG$/,'Integrated coal gasification combined cycle').replace(/^JE$/,'Jet engine').replace(/^NB$/,'Steam turbine - boiling water nuclear reactor').replace(/^\"NP\"$/,'Steam turbine - pressurized water nuclear reactor').replace(/^OT$/,'Other').replace(/^PS$/,'Hydraulic turbine - reversible (pumped storage)').replace(/^PV$/,'Photovoltaic').replace(/^SF$/,'Steam turbine fluidized bed combustion').replace(/^SO$/,'Solar (photovoltaic)').replace(/^ST$/,'Steam turbine - boiler').replace(/^WT$/,'Wind turbine')",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Generator_status using expression grel:value.replace(/^CS$/,'Cold storage').replace(/^MR$/,'Proposed for deactivation shutdown status').replace(/^OP$/,'Operating').replace(/^OS$/,'In commercial operation, but out of service').replace(/^RE$/,'Retired').replace(/^SB$/,'Cold stand-by (long-term storage)').replace(/^SD$/,'Sold to nonutility')",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Generator_status",
+    "expression": "grel:value.replace(/^CS$/,'Cold storage').replace(/^MR$/,'Proposed for deactivation shutdown status').replace(/^OP$/,'Operating').replace(/^OS$/,'In commercial operation, but out of service').replace(/^RE$/,'Retired').replace(/^SB$/,'Cold stand-by (long-term storage)').replace(/^SD$/,'Sold to nonutility')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
     "op": "rdf-extension/save-rdf-schema",
     "description": "Save RDF schema skeleton",
     "schema": {
@@ -31,12 +213,12 @@
           "uri": "http://xmlns.com/foaf/0.1/"
         },
         {
-          "name": "xsd",
-          "uri": "http://www.w3.org/2001/XMLSchema#"
-        },
-        {
           "name": "owl",
           "uri": "http://www.w3.org/2002/07/owl#"
+        },
+        {
+          "name": "xsd",
+          "uri": "http://www.w3.org/2001/XMLSchema#"
         },
         {
           "name": "rdf",
@@ -150,13 +332,36 @@
                     }
                   },
                   {
-                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Amount",
-                    "curie": "egridprop:Amount",
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Value",
+                    "curie": "egridprop:Value",
                     "target": {
-                      "nodeType": "cell-as-literal",
-                      "expression": "value",
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/GeneratorStatus/'+cells[\"GENSTAT\"].value",
                       "isRowNumberCell": false,
-                      "columnName": "GENSTAT"
+                      "columnName": "GENSTAT",
+                      "rdfTypes": [],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "Generator_status"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Abbreviation",
+                          "curie": "egridprop:Abbreviation",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "GENSTAT"
+                          }
+                        }
+                      ]
                     }
                   }
                 ]
@@ -166,10 +371,56 @@
               "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Prime_Mover",
               "curie": "egridprop:Prime_Mover",
               "target": {
-                "nodeType": "cell-as-literal",
-                "expression": "value",
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/' + cells[\"ORISPL\"].value + '/Generator/' + cells[\"GENID\"].value + '/PrimeMover/' + cells[\"year\"].value",
                 "isRowNumberCell": false,
-                "columnName": "PRMVR"
+                "columnName": "PRMVR",
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Value",
+                    "curie": "egridprop:Value",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/PrimeMover/'+cells[\"PRMVR\"].value",
+                      "isRowNumberCell": true,
+                      "rdfTypes": [],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "Prime_mover"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Abbreviation",
+                          "curie": "egridprop:Abbreviation",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "PRMVR"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
               }
             },
             {
@@ -421,6 +672,61 @@
                 "isRowNumberCell": false,
                 "valueType": "http://www.w3.org/2001/XMLSchema#double",
                 "columnName": "SEQGEN07"
+              }
+            },
+            {
+              "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Primary_Generator_Fuel",
+              "curie": "egridprop:Primary_Generator_Fuel",
+              "target": {
+                "nodeType": "cell-as-resource",
+                "expression": "'http://enipedia.tudelft.nl/data/eGRID/Plant/'+cells[\"ORISPL\"].value+'/Generator/'+cells[\"GENID\"].value+'/Primary_Generator_Fuel/'+cells[\"year\"].value",
+                "isRowNumberCell": true,
+                "rdfTypes": [],
+                "links": [
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Year",
+                    "curie": "egridprop:Year",
+                    "target": {
+                      "nodeType": "cell-as-literal",
+                      "expression": "value",
+                      "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#int",
+                      "columnName": "year"
+                    }
+                  },
+                  {
+                    "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Value",
+                    "curie": "egridprop:Value",
+                    "target": {
+                      "nodeType": "cell-as-resource",
+                      "expression": "'http://enipedia.tudelft.nl/data/eGRID/Fuel/'+cells[\"FUELG1\"].value",
+                      "isRowNumberCell": true,
+                      "rdfTypes": [],
+                      "links": [
+                        {
+                          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+                          "curie": "rdfs:label",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "Fuel_description"
+                          }
+                        },
+                        {
+                          "uri": "http://enipedia.tudelft.nl/data/eGRID/prop/Abbreviation",
+                          "curie": "egridprop:Abbreviation",
+                          "target": {
+                            "nodeType": "cell-as-literal",
+                            "expression": "value",
+                            "isRowNumberCell": false,
+                            "columnName": "FUELG1"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
               }
             }
           ]
