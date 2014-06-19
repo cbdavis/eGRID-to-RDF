@@ -8,7 +8,7 @@ eGRID.R downloads the relevant files from the US EPA eGRID website, and then mer
 
 After the R code is run, <a href="http://code.google.com/p/google-refine/">Google Refine</a> is used to map the data in the CSV files to RDF.  Make sure that you first have the <a href="http://refine.deri.ie/">RDF Refine extension</a> installed.
 
-You probably want to increase the amount of memory available to Google Refine as it will be used to generate rather large files (~200M each).  If you're running from the command line, you need to do:
+You probably want to increase the amount of memory available to Google Refine as it will be used to generate rather large files (~400M each).  If you're running from the command line, you need to do:
 <pre>
 export REFINE_MEMORY=2048M
 ./refine
