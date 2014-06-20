@@ -426,20 +426,20 @@
           "uri": "http://xmlns.com/foaf/0.1/"
         },
         {
-          "name": "owl",
-          "uri": "http://www.w3.org/2002/07/owl#"
-        },
-        {
           "name": "xsd",
           "uri": "http://www.w3.org/2001/XMLSchema#"
         },
         {
-          "name": "wgs84",
-          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+          "name": "owl",
+          "uri": "http://www.w3.org/2002/07/owl#"
         },
         {
           "name": "rdf",
           "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        },
+        {
+          "name": "wgs84",
+          "uri": "http://www.w3.org/2003/01/geo/wgs84_pos#"
         },
         {
           "name": "egridprop",
@@ -4086,6 +4086,7 @@
                       "nodeType": "cell-as-literal",
                       "expression": "value",
                       "isRowNumberCell": false,
+                      "valueType": "http://www.w3.org/2001/XMLSchema#double",
                       "columnName": "Plant_nameplate_capacity_MW"
                     }
                   },
